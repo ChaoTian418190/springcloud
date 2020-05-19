@@ -19,4 +19,21 @@ mybatis:
 logging:
   level:
     cn.enjoy.mapper: debug
+eureka:
+  client:
+    service-url:
+#      defaultZone: http://localhost:7001/eureka  #eureka注册地址
+#      defaultZone: http://admin:enjoy@localhost:7001/eureka  #添加用户名和密码的注册机制
+      #eureka集群
+       defaultZone: http://admin:enjoy@eureka1:7001/eureka,http://admin:enjoy@eureka2:7002/eureka
+  instance:
+    instance-id: microcloud-provider-product     #eureka注册中心Status显示名
+    prefer-ip-address: true                      #eureka注册中心点击Status出现服务ip，而不是主机名
+    lease-renewal-interval-in-seconds: 2         #设置心跳的时间间隔（默认是30秒）,告诉eureka当前自己的状态
+    lease-expiration-duration-in-seconds: 5      #如果现在超过了5秒的间隔（默认是90秒），如果超过该时间，认为服务下线了
 
+info:
+  app.name: microcloud-provider-product
+  company.name: enjoy
+  build.artifactId: $project.artifactId$
+  build.modelVersion: $project.modelVersion$

@@ -2,6 +2,7 @@ package cn.enjoy.controll;
 
 import cn.enjoy.service.IProductService;
 import cn.enjoy.vo.Product;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,10 +17,10 @@ public class ProductController {
     @Resource
     private IProductService iProductService;
 
-    //    import com.netflix.discovery.DiscoveryClient;
-//    import org.springframework.cloud.client.discovery.DiscoveryClient;
-   /* @Resource
-    private DiscoveryClient client ; */// 进行Eureka的发现服务
+    // import com.netflix.discovery.DiscoveryClient;
+    //import org.springframework.cloud.client.discovery.DiscoveryClient;
+    @Resource
+    private DiscoveryClient client ; // 进行Eureka的发现服务
 
     @RequestMapping(value="/get/{id}")
     public Object get(@PathVariable("id") long id) {
@@ -35,8 +36,8 @@ public class ProductController {
     }
 
 
-  /*  @RequestMapping("/discover")
+    @RequestMapping("/discover")
     public Object discover() { // 直接返回发现服务信息
         return this.client ;
-    }*/
+    }
 }
